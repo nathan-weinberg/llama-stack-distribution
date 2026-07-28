@@ -15,10 +15,10 @@ import re
 import shlex
 from pathlib import Path
 
-CURRENT_LLAMA_STACK_VERSION = "v0.4.2.1+rhai0"
+CURRENT_LLAMA_STACK_VERSION = "v0.4.7+rhai0"
 LLAMA_STACK_VERSION = os.getenv("LLAMA_STACK_VERSION", CURRENT_LLAMA_STACK_VERSION)
-LLAMA_STACK_CLIENT_VERSION = "v0.4.2"  # Set to None to auto-derive from LLAMA_STACK_VERSION, or set explicit version
-LLAMA_STACK_API_VERSION = "v0.4.4"  # pre-0.4.4 had broken packaging (llama-stack#4777)
+LLAMA_STACK_CLIENT_VERSION = "v0.4.7"  # Set to None to auto-derive from LLAMA_STACK_VERSION, or set explicit version
+LLAMA_STACK_API_VERSION = "v0.4.7"  # pre-0.4.4 had broken packaging (llama-stack#4777)
 BASE_REQUIREMENTS = [
     f"llama-stack=={LLAMA_STACK_VERSION}",
 ]
@@ -33,6 +33,8 @@ PINNED_DEPENDENCIES = [
     "'ibm-cos-sdk-core==2.14.2'",
     "'ibm-cos-sdk==2.14.2'",
     "'setuptools==81.0.0'",  # due to bug in milvus-lite with unreleased fix: https://github.com/milvus-io/milvus-lite/pull/323
+    "'pillow>=12.3.0'",  # CVE-2026-42311, CVE-2026-55379/55380/54060
+    "'nltk>=3.10.0'",  # CVE-2026-54293, CVE-2026-12243
 ]
 
 source_install_command = """RUN uv pip install --no-cache --no-deps git+https://github.com/opendatahub-io/llama-stack.git@{llama_stack_version}
