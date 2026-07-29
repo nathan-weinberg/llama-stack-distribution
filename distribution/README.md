@@ -4,7 +4,7 @@
 
 This image contains the official Open Data Hub OGX distribution, with all the packages and configuration needed to run an OGX server in a containerized environment.
 
-The image is currently shipping with the Open Data Hub version of OGX version [1.2.1+rhaiv.0](https://github.com/opendatahub-io/ogx/releases/tag/v1.2.1+rhaiv.0)
+The image is currently shipping with the Open Data Hub version of OGX version [1.2.2+rhaiv.0](https://github.com/opendatahub-io/ogx/releases/tag/v1.2.2+rhaiv.0)
 
 You can see an overview of the APIs and Providers the image ships with in the table below.
 
@@ -31,9 +31,9 @@ You can see an overview of the APIs and Providers the image ships with in the ta
 | messages | inline::builtin | No | ✅ | N/A |
 | responses | inline::builtin | No | ✅ | N/A |
 | tool_runtime | inline::file-search | No | ✅ | N/A |
-| tool_runtime | remote::brave-search | No | ✅ | N/A |
+| tool_runtime | remote::brave-search | No | ❌ | Set the `BRAVE_SEARCH_API_KEY` environment variable |
 | tool_runtime | remote::model-context-protocol | No | ✅ | N/A |
-| tool_runtime | remote::tavily-search | No | ✅ | N/A |
+| tool_runtime | remote::tavily-search | No | ❌ | Set the `TAVILY_SEARCH_API_KEY` environment variable |
 | vector_io | inline::faiss | No | Dependency only* | Requires a custom `config.yaml` |
 | vector_io | inline::milvus | No | Dependency only* | Requires a custom `config.yaml`. Incompatible with multi-worker deployments |
 | vector_io | remote::milvus | No | ❌ | Set the `MILVUS_ENDPOINT` environment variable |
