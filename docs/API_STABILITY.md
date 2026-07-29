@@ -6,7 +6,7 @@ description: How upstream OGX API stability applies to Red Hat OpenShift AI rele
 # RHOAI API Stability — Downstream
 
 This document is the RHOAI counterpart to upstream OGX's
-[API Stability Leveling](docs/docs/concepts/apis/api_leveling.mdx). It only
+[API Stability Leveling](https://github.com/ogx-ai/ogx/blob/main/docs/docs/concepts/apis/api_leveling.mdx). It only
 covers what is *different* downstream. Anything not mentioned here follows
 upstream verbatim.
 
