@@ -40,6 +40,7 @@ PINNED_DEPENDENCIES = [
     # That stub was removed in langchain-community 0.4.2; 0.4.1 is the last
     # release that still ships it (and stays on the langchain-core 1.0.x line).
     "'langchain-community==0.4.1'",
+    "'mcp>=1.23.0,<2.0.0'",  # mcp 2.0 renamed McpError, breaks llama-stack 0.7.x
 ]
 
 source_install_command = """RUN uv pip install --no-cache --no-deps git+https://github.com/opendatahub-io/llama-stack.git@{llama_stack_version}
