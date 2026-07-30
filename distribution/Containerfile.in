@@ -7,6 +7,10 @@ RUN pip install sqlalchemy # somehow sqlalchemy[asyncio] is not sufficient
 {llama_stack_install_source}
 
 RUN mkdir -p ${{HOME}}/.llama ${{HOME}}/.cache
+
+# Download embedding model at build time to avoid runtime download failures
+RUN python3 -c "from huggingface_hub import snapshot_download; snapshot_download('ibm-granite/granite-embedding-125m-english')"
+
 COPY distribution/config.yaml ${{APP_ROOT}}/config.yaml
 COPY --chmod=755 distribution/entrypoint.sh ${{APP_ROOT}}/entrypoint.sh
 

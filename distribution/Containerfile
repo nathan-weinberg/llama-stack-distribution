@@ -72,6 +72,8 @@ RUN uv pip install --no-cache --no-deps git+https://github.com/opendatahub-io/ll
 RUN uv pip install --no-cache --no-deps llama-stack-client==v0.4.7
 RUN uv pip install --no-cache --no-deps llama-stack-api==v0.4.7
 RUN mkdir -p ${HOME}/.llama ${HOME}/.cache
+# Download embedding model at build time to avoid runtime download failures
+RUN python3 -c "from huggingface_hub import snapshot_download; snapshot_download('ibm-granite/granite-embedding-125m-english')"
 COPY distribution/config.yaml ${APP_ROOT}/config.yaml
 COPY --chmod=755 distribution/entrypoint.sh ${APP_ROOT}/entrypoint.sh
 #TODO: remove this once we have a stable version of llama-stack
