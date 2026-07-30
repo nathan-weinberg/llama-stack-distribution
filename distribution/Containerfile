@@ -57,9 +57,9 @@ RUN uv pip install --prerelease=allow \
 RUN uv pip install --prerelease=allow \
     llama_stack_provider_lmeval==0.4.2
 RUN uv pip install --prerelease=allow \
-    llama_stack_provider_ragas[inline]==0.5.1
+    llama_stack_provider_ragas[inline]==0.5.4
 RUN uv pip install --prerelease=allow \
-    llama_stack_provider_ragas[remote]==0.5.1
+    llama_stack_provider_ragas[remote]==0.5.4
 RUN uv pip install --prerelease=allow \
     llama_stack_provider_trustyai_fms==0.3.2
 RUN uv pip install --prerelease=allow \
