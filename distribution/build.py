@@ -220,6 +220,12 @@ def get_dependencies():
             ]
             packages = sorted(set(packages))
 
+            # sentence-transformers needs its deps for model loading
+            if "--no-deps" in flags and any(
+                "sentence-transformers" in p for p in packages
+            ):
+                flags.remove("--no-deps")
+
             # Build the command based on flags
             if extra_index_url or "--index-url" in flags:
                 # Torch dependencies with extra index URL
