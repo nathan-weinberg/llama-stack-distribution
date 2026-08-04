@@ -41,6 +41,7 @@ PINNED_DEPENDENCIES = [
     # release that still ships it (and stays on the langchain-core 1.0.x line).
     "'langchain-community==0.4.1'",
     "'mcp>=1.23.0,<2.0.0'",  # mcp 2.0 renamed McpError, breaks llama-stack 0.7.x
+    "'tokenizers>=0.21,<0.23.0rc0'",  # 0.23.0rc0 breaks granite-embedding model loading
 ]
 
 source_install_command = """RUN uv pip install --no-cache --no-deps git+https://github.com/opendatahub-io/llama-stack.git@{llama_stack_version}
@@ -219,12 +220,6 @@ def get_dependencies():
                 for package in packages
             ]
             packages = sorted(set(packages))
-
-            # sentence-transformers needs its deps for model loading
-            if "--no-deps" in flags and any(
-                "sentence-transformers" in p for p in packages
-            ):
-                flags.remove("--no-deps")
 
             # Build the command based on flags
             if extra_index_url or "--index-url" in flags:
