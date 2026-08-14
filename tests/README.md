@@ -91,6 +91,9 @@ Some upstream tests are currently skipped, grouped by reason:
 - `test_openai_chat_completion_streaming_with_n`
 - `test_inference_store_tool_calls`
 
+**Anthropic provider missing strict field in structured output schema (skipped for `anthropic` models):**
+- `test_openai_chat_completion_structured_output`
+
 **Requires vLLM >= v0.12.0** ([ogx/ogx#4984](https://github.com/ogx/ogx/issues/4984)):
 - `test_openai_completion_guided_choice`
 

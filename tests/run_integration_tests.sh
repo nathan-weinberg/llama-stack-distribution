@@ -75,6 +75,12 @@ function run_integration_tests() {
         SKIP_TESTS="$SKIP_TESTS or test_openai_chat_completion_streaming or test_openai_chat_completion_streaming_with_n or test_inference_store_tool_calls"
     fi
 
+    # Anthropic provider specific structured output schema error
+    # - test_openai_chat_completion_structured_output: Anthropic requires response_format.json_schema.strict which upstream test fixtures omit.
+    if [[ "$model" == anthropic* ]]; then
+        SKIP_TESTS="$SKIP_TESTS or test_openai_chat_completion_structured_output"
+    fi
+
     # Dynamically determine the path to config.yaml from the original script directory
     STACK_CONFIG_PATH="$SCRIPT_DIR/../distribution/config.yaml"
     if [ ! -f "$STACK_CONFIG_PATH" ]; then
