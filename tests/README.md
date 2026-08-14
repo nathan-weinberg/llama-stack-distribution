@@ -81,12 +81,12 @@ Some upstream tests are currently skipped, grouped by reason:
 - `test_tool_with_complex_schema`
 - `test_tool_without_schema`
 
-**Structured output and tool-calling tests timing out on CPU:**
+**Structured output and tool-calling tests timing out on CPU (skipped for `vllm` / CPU models):**
 - `test_openai_chat_completion_structured_output`
 - `test_simple_tool_call`
 - `test_streaming_tool_calls`
 
-**Gemini / Vertex AI provider incompatible tests (`client_with_models`):**
+**Gemini / Vertex AI provider incompatible tests (skipped for `gemini` / `vertexai` models):**
 - `test_openai_chat_completion_streaming`
 - `test_openai_chat_completion_streaming_with_n`
 - `test_inference_store_tool_calls`
