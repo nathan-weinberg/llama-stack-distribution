@@ -86,6 +86,11 @@ Some upstream tests are currently skipped, grouped by reason:
 - `test_simple_tool_call`
 - `test_streaming_tool_calls`
 
+**Gemini / Vertex AI provider incompatible tests (`client_with_models`):**
+- `test_openai_chat_completion_streaming`
+- `test_openai_chat_completion_streaming_with_n`
+- `test_inference_store_tool_calls`
+
 **Requires vLLM >= v0.12.0** ([ogx/ogx#4984](https://github.com/ogx/ogx/issues/4984)):
 - `test_openai_completion_guided_choice`
 
