@@ -11,6 +11,7 @@ dependencies = [
     "nbconvert>=7.17.0",
     "ipykernel>=7.2.0",
     "mcp>=1.9.0,<2",
+    "ogx-client>=1.2.2+rhaiv.0",
 ]
 
 [build-system]
