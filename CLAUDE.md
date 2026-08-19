@@ -71,7 +71,13 @@ between modes** (`Containerfile.in`):
   registry access. The `.cache/` contents are gitignored (only `.gitkeep` is tracked).
 
 The fork vs non-fork decision is made in the workflow (`IS_FORK`) and passed as the build arg.
-Konflux/downstream consumption is handled separately.
+
+The midstream **Konflux** build (`.tekton/`) always uses `pull`: the PipelineRuns set
+`build-args: OGX_ARTIFACT_SOURCE=pull` and `additional-build-secret: redhat-stage-registry-token`,
+which mounts that namespace secret's `oras-token` key as the build secret. That secret must
+exist in the `open-data-hub-tenant` namespace:
+`oc create secret generic redhat-stage-registry-token -n open-data-hub-tenant --from-literal=oras-token='<TOKEN>'`.
+Downstream (product) consumption is handled separately.
 
 ### Auto-Generated Files (do not edit manually)
 
