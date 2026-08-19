@@ -29,9 +29,13 @@ runs:
         fi
 
         # Start vllm container
+        # --shm-size: vLLM's multiproc executor allocates its inter-process
+        # message queue in /dev/shm; the Docker default of 64 MiB is too small
+        # (v0.27.1 requires 160 MiB) and EngineCore fails to start without this.
         docker run -d \
           --name vllm-$VLLM_MODE \
           --net=host \
+          --shm-size=2g \
           $VLLM_IMAGE \
           $VLLM_ARGS
 
